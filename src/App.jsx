@@ -1,19 +1,24 @@
 import rasm from "./logo192.png";
 import "./app.scss";
+import { useState } from "react";
 
 function App() {
-  const name = "John";
+  const [counter, setCounter] = useState(0)
+  
+  const increaseCounter = () => {
+    setCounter(counter + 1);
+  }
+  const decreaseCounter = () => {
+    setCounter(counter - 1);
+  }
 
   return (
     <div className="container">
-      <h2>{name}</h2>
-      <p className="h3" style={{ color: "green", backgroundColor: 'black', backgroundImage: `url(${rasm})` }}>
-        {12 + 21}
-      </p>
-      <label htmlFor="name">
-        <input type="text" name="" id="name" />
-        <img src={rasm} alt="" />
-      </label>
+      <div className="d-flex justify-content-center align-items-center">
+      <button onClick={decreaseCounter} className="btn btn-info p-4 mt-5 fs-5">-</button>
+      <div className="fs-5 mt-5 p-3">{counter}</div>
+      <button onClick={increaseCounter} className="btn btn-info p-4 mt-5 fs-5">+</button>
+      </div>
     </div>
   );
 }
